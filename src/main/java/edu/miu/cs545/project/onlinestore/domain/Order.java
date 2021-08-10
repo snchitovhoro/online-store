@@ -1,51 +1,34 @@
 package edu.miu.cs545.project.onlinestore.domain;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
-
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 @Entity
-@Table(name = "orders")
+@Table(name="orders")
 public class Order implements Serializable {
-    private static final long serialVersionUID = 7359591984285268537L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "order_id", nullable = false)
+    @Column(name = "id",nullable = false)
     private long id;
 
-    @Column(name = "order_date", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private LocalDate orderDate;
+    @Column(name = "date",columnDefinition = "timestamp default current_timestamp")
+    private LocalDate date;
 
-    @Column(name = "total_money", columnDefinition = "double default 0.0")
-    private Double totalMoney;
+    @Column(name = "amount", columnDefinition = "double default 0.0")
+    private Double amount;
 
-    @Column(name = "current_status", columnDefinition = "VARCHAR(20) DEFAULT 'NEW'")
-    private String currentStatus;
-
-
-    @OneToMany(mappedBy="order")
-    private List<OrderLine> cartLines = new ArrayList();
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="buyer_id")
-    Buyer buyer;
-
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name="payment_id")
-    Payment payment;
-
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name="shipping_id")
-    Shipping shipping;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status", columnDefinition = "default 'NEW")
+    private Status status;
 }

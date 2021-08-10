@@ -1,29 +1,27 @@
 package edu.miu.cs545.project.onlinestore.domain;
 
-
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "admins")
 public class Admin implements Serializable {
-    private static final long serialVersionUID = 7359591984285268537L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "admin_id", nullable = false)
+    @Column(name = "id", nullable = false)
     private long id;
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id")
-    User user;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "level")
-    private String level;
+    private Level level;
 }

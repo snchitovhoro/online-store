@@ -1,35 +1,31 @@
 package edu.miu.cs545.project.onlinestore.domain;
 
-
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 @Entity
-@Table(name = "orderhistory")
+@Table(name = "orders_history")
 public class OrderHistory implements Serializable {
-    private static final long serialVersionUID = 7359591984285268537L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "order_history_id", nullable = false)
+    @Column(name = "id", nullable = false)
     private long id;
 
     @Column(name = "status_date")
     private LocalDate statusDate;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "status")
-    private String status;
-
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name="order_id")
-    Order order;
-
+    private Status status;
 }
