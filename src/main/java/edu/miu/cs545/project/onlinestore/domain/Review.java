@@ -1,8 +1,5 @@
 package edu.miu.cs545.project.onlinestore.domain;
 
-package miu.edu.ecommerce.domain;
-
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
