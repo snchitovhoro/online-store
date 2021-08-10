@@ -1,8 +1,11 @@
 package edu.miu.cs545.project.onlinestore.repository;
 
 import edu.miu.cs545.project.onlinestore.domain.Address;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.reactive.ReactiveCrudRepository;
+import org.springframework.stereotype.Repository;
 
-public interface OrderRepository extends ReactiveCrudRepository<Address, Long> {
+@Repository
+public interface OrderRepository extends CrudRepository<Address, Long> {
 
 }
