@@ -27,5 +27,12 @@ public class OrderLine implements Serializable {
     private Double amount;
     @Column(name = "total", columnDefinition = "double default 0.0")
     private Double total;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "order_id")
+    Order order;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "product_id")
+    Product product;
 
 }

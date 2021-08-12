@@ -1,7 +1,6 @@
 package edu.miu.cs545.project.onlinestore.domain;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;

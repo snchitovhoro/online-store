@@ -19,14 +19,14 @@ public class Category implements Serializable {
     private static final long serialVersionUID = 7359591984285268537L;
 
     @Id
-    // @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "category_id", nullable = false)
     private long id;
 
     @Column(name = "category_name", nullable = false)
     private String name;
 
-    @OneToMany(mappedBy="category")
+    @OneToMany(mappedBy = "category")
     private List<Product> products = new ArrayList();
 
 }
